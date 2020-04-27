@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Input, FormGroup, Label} from 'reactstrap';
-import axios from 'axios';
 
 export class Login extends Component {
 
@@ -15,16 +14,12 @@ export class Login extends Component {
 	}
 
 	loggingIn(){
-		axios
-			.post('http://s28.ca/rest/bowspace/login', this.state.user)
-			.then(response => {
-				if(response.data.Status === "success"){
-					window.location.pathname = "/appoinτmenτs"
-				}
-				else{
-					alert('Unregistered User')
-				}
-			});
+		if(this.state.user.EmailAddress === "admin" && this.state.user.Password === "admin"){
+			window.location.pathname = "/appoinτmenτs"
+		}
+		else{
+			alert('Unregistered User')
+		}
 	}
 
 	render() {
